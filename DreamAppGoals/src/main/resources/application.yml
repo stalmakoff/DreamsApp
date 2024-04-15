@@ -1,0 +1,6 @@
+#spring.application.name=DreamAppGoals
+spring:
+  jpa:
+    generate-ddl: true
+
+
