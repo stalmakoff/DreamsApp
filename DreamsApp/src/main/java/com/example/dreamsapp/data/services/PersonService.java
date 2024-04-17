@@ -1,10 +1,12 @@
 package com.example.dreamsapp.data.services;
 
+import com.example.dreamsapp.data.dto.GoalDto;
 import com.example.dreamsapp.data.dto.PersonDto;
 import com.example.dreamsapp.data.model.Person;
 import com.example.dreamsapp.data.repositories.NoteRepository;
 import com.example.dreamsapp.data.repositories.PersonRepository;
 import com.example.dreamsapp.web.client.GoalsClient;
+import com.example.dreamsapp.web.client.GoalsClientOld;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -26,6 +28,7 @@ public class PersonService {
 
     private final NoteService noteService;
     private final GoalsClient goalsClient;
+    private final GoalsClientOld goalsClientOld;
 
     private final NoteRepository noteRepository;
 
@@ -57,14 +60,11 @@ public class PersonService {
         //call goals service
         //create PersonDto
         var person = personRepository.findById(personId).orElseThrow();
-        var goals = goalsClient.getGoalByPersonId(personId);
+//        var goals = goalsClient.getGoalByPersonId(personId);
+        var goals = goalsClientOld.getGoalByPersonId(personId);
         var notes = noteService.findAllByPersonId(personId);
         return new PersonDto(person.getFirst_name(), person.getLast_name(), notes, goals);
 
-
-
-//        List<ServiceInstance> goalInstances = discoveryClient.getInstances("goals"); already redundant, we can write easier. see above
-//        var instance = goalInstances.get(0);
     }
 
 }
