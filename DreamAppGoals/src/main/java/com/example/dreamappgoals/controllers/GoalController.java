@@ -15,7 +15,7 @@ public class GoalController {
     private final GoalRepository goalRepository;
 
     @GetMapping
-    public List<Goal> getGoalByPersonId(@RequestParam Long personId){
+    public List<Goal> getGoalByPersonId(@RequestParam Long personId) throws InterruptedException {
         return goalRepository.findAllByPersonId(personId);
     }
 
