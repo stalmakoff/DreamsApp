@@ -16,6 +16,7 @@ public class GoalController {
 
     @GetMapping
     public List<Goal> getGoalByPersonId(@RequestParam Long personId) throws InterruptedException {
+//        throw new RuntimeException("error"); //for test
         return goalRepository.findAllByPersonId(personId);
     }
 

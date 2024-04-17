@@ -60,8 +60,8 @@ public class PersonService {
         //call goals service
         //create PersonDto
         var person = personRepository.findById(personId).orElseThrow();
-//        var goals = goalsClient.getGoalByPersonId(personId);
-        var goals = goalsClientOld.getGoalByPersonId(personId);
+        var goals = goalsClient.getGoalByPersonId(personId);
+//        var goals = goalsClientOld.getGoalByPersonId(personId);
         var notes = noteService.findAllByPersonId(personId);
         return new PersonDto(person.getFirst_name(), person.getLast_name(), notes, goals);
 
