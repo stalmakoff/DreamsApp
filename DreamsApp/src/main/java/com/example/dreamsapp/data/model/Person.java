@@ -35,5 +35,9 @@ public class Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "person", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Note> notes = new ArrayList<>();
 
-
+    @OneToMany
+    @Setter(AccessLevel.PRIVATE)
+    @JsonManagedReference
+    @JsonIgnore
+    private List<Goal> goals = new ArrayList<>();
 }

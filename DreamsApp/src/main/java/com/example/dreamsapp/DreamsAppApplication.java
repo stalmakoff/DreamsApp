@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableFeignClients
 @SpringBootApplication
 @EnableCaching
+
 public class DreamsAppApplication {
 
     public static void main(String[] args) {
